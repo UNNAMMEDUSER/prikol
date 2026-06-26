@@ -3,8 +3,10 @@
   "id": "dimension_bleed",
   "version": "${version}",
   "name": "Dimension Bleed",
-  "description": "Assigns every chunk a deterministic unique seed and rarely lets chunks borrow terrain flavor from another dimension.",
-  "authors": ["OpenAI"],
+  "description": "Remaps every chunk to terrain sampled from a deterministic per-chunk seed, making the world look stitched together from other worlds.",
+  "authors": [
+    "OpenAI"
+  ],
   "contact": {},
   "license": "MIT",
   "environment": "*",
@@ -18,5 +20,8 @@
     "minecraft": "~1.21",
     "java": ">=21",
     "fabric-api": "*"
-  }
+  },
+  "mixins": [
+    "dimension_bleed.mixins.json"
+  ]
 }
