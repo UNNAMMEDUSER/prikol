@@ -6,7 +6,7 @@ import net.minecraft.world.biome.source.BiomeAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.Blender;
-import net.minecraft.world.gen.chunk.HeightContext;
+import net.minecraft.world.gen.HeightContext;
 import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.noise.NoiseConfig;
 import org.spongepowered.asm.mixin.Mixin;
