@@ -5,7 +5,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.Blender;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.noise.NoiseConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -49,7 +49,7 @@ public abstract class NoiseChunkGeneratorMixin {
 
     @Inject(method = "buildSurface", at = @At("HEAD"))
     private void dimensionBleed$remapSurfaceStart(
-            ServerWorld world,
+            StructureWorldAccess world,
             StructureAccessor structureAccessor,
             NoiseConfig noiseConfig,
             Chunk chunk,
@@ -60,7 +60,7 @@ public abstract class NoiseChunkGeneratorMixin {
 
     @Inject(method = "buildSurface", at = @At("RETURN"))
     private void dimensionBleed$remapSurfaceEnd(
-            ServerWorld world,
+            StructureWorldAccess world,
             StructureAccessor structureAccessor,
             NoiseConfig noiseConfig,
             Chunk chunk,
