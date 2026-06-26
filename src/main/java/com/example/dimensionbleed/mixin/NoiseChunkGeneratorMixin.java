@@ -2,11 +2,10 @@ package com.example.dimensionbleed.mixin;
 
 import com.example.dimensionbleed.ChunkSeedMapper;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.biome.source.BiomeAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.Blender;
-import net.minecraft.world.gen.HeightContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.noise.NoiseConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -50,11 +49,10 @@ public abstract class NoiseChunkGeneratorMixin {
 
     @Inject(method = "buildSurface", at = @At("HEAD"))
     private void dimensionBleed$remapSurfaceStart(
-            Chunk chunk,
-            HeightContext heightContext,
-            NoiseConfig noiseConfig,
+            ServerWorld world,
             StructureAccessor structureAccessor,
-            BiomeAccess biomeAccess,
+            NoiseConfig noiseConfig,
+            Chunk chunk,
             CallbackInfo ci
     ) {
         dimensionBleed$swapChunkPos(chunk);
@@ -62,11 +60,10 @@ public abstract class NoiseChunkGeneratorMixin {
 
     @Inject(method = "buildSurface", at = @At("RETURN"))
     private void dimensionBleed$remapSurfaceEnd(
-            Chunk chunk,
-            HeightContext heightContext,
-            NoiseConfig noiseConfig,
+            ServerWorld world,
             StructureAccessor structureAccessor,
-            BiomeAccess biomeAccess,
+            NoiseConfig noiseConfig,
+            Chunk chunk,
             CallbackInfo ci
     ) {
         dimensionBleed$restoreChunkPos(chunk);
